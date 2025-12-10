@@ -95,13 +95,15 @@ kubectl get hpa
 
 📸 Screenshot 6: HPA showing min=2, max=5  
 ![HPA status](images/Screenshot%20(22).png)
+
+📸 Screenshot : Running stress-test   
 ![HPA status](images/Screenshot%20(27).png)
 
 
 🧪 Load Testing (simulate high CPU)  
 - Enter a Flask pod:  
 ```
-kubectl exec -it <flask-pod-name> -- bash
+kubectl exec -it flask-app-689d478744-dwft2 -- bash
 apt update && apt install -y stress
 stress --cpu 2 --timeout 120s
 ```
@@ -113,10 +115,10 @@ kubectl get hpa -w
 
 
 You should see new pods appearing automatically ➜ scaling from 2 → 4 → 5
+![Scaled Flask pods](images/Screenshot%20(28).png)
 
 📸 Screenshot 7: New Flask pods created by HPA  
 ![Scaled Flask pods](images/Screenshot%20(23).png)
-![Scaled Flask pods](images/Screenshot%20(28).png)
 
 
 📌 DNS Resolution in Kubernetes (Inter-Pod Communication)
